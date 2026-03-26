@@ -29,6 +29,7 @@ namespace WebAPIDemo.Controllers
         [HttpPost]
         public async Task<IActionResult> AddLearner(Learner learner)
         {
+            learner.Id = Guid.NewGuid();
            await _context.Learners.AddAsync(learner);
             await _context.SaveChangesAsync();
             return Ok(learner);
