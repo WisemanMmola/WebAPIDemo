@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Register DbContext with the dependency injection container
 builder.Services.AddDbContext<ApiDbContext>(options => 
-options.UseSqlServer(builder.Configuration.GetConnectionString("GetDefaultConnection"))
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 
