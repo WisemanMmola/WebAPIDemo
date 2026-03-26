@@ -18,7 +18,7 @@ namespace WebAPIDemo.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var Mylearner = _context.learners.ToList();
+            var Mylearner = _context.Learners.ToList();
             if (Mylearner is null)
             {
                 return NotFound("No learners where found");
