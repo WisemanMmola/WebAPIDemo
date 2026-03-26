@@ -26,6 +26,18 @@ namespace WebAPIDemo.Controllers
             return Ok(Mylearner);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid Id)
+        {
+            var MyLearner = await _context.Learners.FindAsync(Id);
+            if (MyLearner == null)
+            {
+                return NotFound("Learner Not Found");
+            }
+
+            return Ok(MyLearner);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddLearner(Learner learner)
         {
