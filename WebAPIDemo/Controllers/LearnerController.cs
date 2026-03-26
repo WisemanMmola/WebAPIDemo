@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPIDemo.Data;
 using WebAPIDemo.Models;
 
@@ -16,20 +17,20 @@ namespace WebAPIDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var Mylearner = _context.Learners.ToList();
-            if (Mylearner is null)
+            var Mylearners = await _context.Learners.ToListAsync();
+            if (!Mylearners.Any())
             {
                 return NotFound("No learners where found");
             }
-            return Ok(Mylearner);
+            return Ok(Mylearners);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid Id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var MyLearner = await _context.Learners.FindAsync(Id);
+            var MyLearner = await _context.Learners.FindAsync(id);
             if (MyLearner == null)
             {
                 return NotFound("Learner Not Found");
