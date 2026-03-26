@@ -10,6 +10,6 @@ namespace WebAPIDemo.Data
         { 
         }
 
-        public DbSet<Learners> learners { get; set; }
+        public DbSet<Learner> Learners { get; set; }
     }
 }

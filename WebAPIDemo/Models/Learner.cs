@@ -2,7 +2,7 @@
 {
 
     //Learners information
-    public class Learners
+    public class Learner
     {
         public Guid Id { get; set; }
         public required string LearnerName { get; set; }

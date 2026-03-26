@@ -6,11 +6,11 @@ namespace WebAPIDemo.Controllers
 {
     [Route("/api/controller")]
     [ApiController]
-    public class LearnersController : ControllerBase
+    public class LearnerController : ControllerBase
     {
         private readonly ApiDbContext _context;
 
-        public LearnersController(ApiDbContext context)
+        public LearnerController(ApiDbContext context)
         {
             _context = context;
         }
@@ -27,11 +27,11 @@ namespace WebAPIDemo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddLearner(Learners Learner)
+        public async Task<IActionResult> AddLearner(Learner learner)
         {
-           await _context.learners.AddAsync(Learner);
+           await _context.Learners.AddAsync(learner);
             await _context.SaveChangesAsync();
-            return Ok(Learner);
+            return Ok(learner);
         }
 
     }
